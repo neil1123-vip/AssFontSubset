@@ -15,7 +15,11 @@ jobs:
         configuration: [Debug, Release]
 
     runs-on: windows-latest
-
+    
+    env:
+      Solution_Name: AssFontSubset.sln
+      Test_Project_Path: AssFontSubset\AssFontSubset.csproj
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
