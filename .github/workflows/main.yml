@@ -58,8 +58,7 @@ jobs:
       run: dotnet test -c $env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
-    - name: Publish
-      uses: brandedoutcast/publish-nuget@v2.5.2
-      with:
-       PROJECT_FILE_PATH: Extensions/Extensions.csproj
-       NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+
+   
+    - name: Push
+      run: dotnet nuget push .\bin\Release\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NuGetAPIKey }} --skip-duplicate --no-symbols 1
